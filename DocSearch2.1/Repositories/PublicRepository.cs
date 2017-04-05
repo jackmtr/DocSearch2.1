@@ -2,6 +2,7 @@
 using DocSearch2._1.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Web;
 
@@ -25,10 +26,13 @@ namespace DocSearch2._1.Repositories
 
             List<PublicVM> PublicVMList = new List<PublicVM>();
 
+            int publicNumberInt = Int32.Parse(publicNumber);
+
             var documentList = (from d in _db.tbl_Document
                                join f in _db.tbl_Folder on d.Folder_ID equals f.Folder_ID
-                               where d.Folder_ID == Int32.Parse(publicNumber)
-                               join dr in _db.tbl_DocReference on d.Document_ID equals dr.Document_ID
+                                //where d.Folder_ID == SqlFunctions.StringConvert((double)publicNumber)
+                                where d.Folder_ID == publicNumberInt
+                                join dr in _db.tbl_DocReference on d.Document_ID equals dr.Document_ID
                                join cab in _db.tbl_Cabinet on f.Cabinet_ID equals cab.Cabinet_ID
                                join dt in _db.tbl_DocumentType on cab.Cabinet_ID equals dt.Cabinet_ID
                                join cat in _db.tbl_Category on dt.Category_ID equals cat.Category_ID

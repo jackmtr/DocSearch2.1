@@ -4,12 +4,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*568801 is Ramins test public #*@
+
+@*
 @using (Html.BeginForm("Index", "Folder", FormMethod.Get)) {
 
     <h1>Enter the Public# then Submit</h1>
 
     @Html.Label("publicId", "Public# ")
     @Html.TextBox("publicId", 34);
-    @*568801*@
+    
+    <input type="submit" value="Submit" />
+}*@
+
+@using (Html.BeginForm("Index", "PublicVM", FormMethod.Get))
+{
+
+    <h1>Enter the Public# then Submit</h1>
+
+    @Html.Label("publicId", "Public# ")
+    @Html.TextBox("publicId", 34);
+
     <input type="submit" value="Submit" />
 }
