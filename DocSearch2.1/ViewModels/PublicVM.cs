@@ -18,7 +18,7 @@ namespace DocSearch2._1.ViewModels
         public string DocumentTypeName { get; set; } //tbl_DocumentType as Name
 
         //document.issue_DT
-        public System.DateTime IssueDate { get; set; } //tbl_Document
+        public Nullable<System.DateTime> IssueDate { get; set; } //tbl_Document
 
         //document.description
         public string Description { get; set; } //tbl_Document
@@ -30,7 +30,7 @@ namespace DocSearch2._1.ViewModels
         public string CategoryName { get; set; } //tbl_Category as Name
 
         //docReference.Date1_DT
-        public System.DateTime EffectiveDate { get; set; } //tbl_DocReference as Date1_DT
+        public Nullable<System.DateTime> EffectiveDate { get; set; } //tbl_DocReference as Date1_DT
 
         //file stuff properties need to be added
     }

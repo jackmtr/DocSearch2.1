@@ -197,6 +197,8 @@
     </Compile>
     <Compile Include="Repositories\FolderRepository.cs" />
     <Compile Include="Repositories\IFolderRepository.cs" />
+    <Compile Include="Repositories\IPublicRepository.cs" />
+    <Compile Include="Repositories\PublicRepository.cs" />
     <Compile Include="ViewModels\PublicVM.cs" />
   </ItemGroup>
   <ItemGroup>
