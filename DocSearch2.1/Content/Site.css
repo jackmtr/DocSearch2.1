@@ -1,4 +1,5 @@
 ﻿body {
+
 }
 
 ul {
@@ -37,6 +38,10 @@ li a:hover {
 
 #public_navigation {
     width: auto;
+}
+
+.hidden {
+    display: none;
 }
 
     /* The switch - the box around the slider */
