@@ -32,6 +32,9 @@ namespace DocSearch2._1.ViewModels
         //docReference.Date1_DT
         public Nullable<System.DateTime> EffectiveDate { get; set; } //tbl_DocReference as Date1_DT
 
+        //docReference.RefNumber
+        public string RefNumber { get; set; }
+
         //file stuff properties need to be added
     }
 }

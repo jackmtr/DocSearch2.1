@@ -26,7 +26,7 @@ namespace DocSearch2._1.Repositories
 
             List<PublicVM> PublicVMList = new List<PublicVM>();
 
-            int publicNumberInt = Int32.Parse(publicNumber);
+            int publicNumberInt = Int32.Parse(publicNumber); //should be able to be done in LINQ
 
             var documentList = (from d in _db.tbl_Document
                                join f in _db.tbl_Folder on d.Folder_ID equals f.Folder_ID
@@ -37,7 +37,7 @@ namespace DocSearch2._1.Repositories
                                join dt in _db.tbl_DocumentType on cab.Cabinet_ID equals dt.Cabinet_ID
                                join cat in _db.tbl_Category on dt.Category_ID equals cat.Category_ID
                                select new {
-                                   f.Folder_ID, d.Document_ID, dt.DocumentType_ID, DtName = dt.Name, d.Issue_DT, d.Description, cat.Category_ID, CatName = cat.Name , dr.Date1_DT
+                                   f.Folder_ID, d.Document_ID, dt.DocumentType_ID, DtName = dt.Name, d.Issue_DT, d.Description, cat.Category_ID, CatName = cat.Name , dr.Date1_DT, dr.RefNumber
                                }).ToList();
 
             foreach (var item in documentList) {
@@ -52,6 +52,7 @@ namespace DocSearch2._1.Repositories
                 objpvm.Category_ID = item.Category_ID;
                 objpvm.CategoryName = item.CatName;
                 objpvm.EffectiveDate = item.Date1_DT;
+                objpvm.RefNumber = item.RefNumber;
 
                 PublicVMList.Add(objpvm);
             }
