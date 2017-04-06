@@ -8,6 +8,7 @@ namespace DocSearch2._1.Controllers
 {
     public class HomeController : Controller
     {
+        // Technically this code wont exist/be used in production
         // GET: Home
         public ActionResult Index()
         {

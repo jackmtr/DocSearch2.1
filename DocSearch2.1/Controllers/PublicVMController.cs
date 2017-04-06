@@ -10,17 +10,25 @@ namespace DocSearch2._1.Controllers
 {
     public class PublicVMController : Controller
     {
-        //will be grabbing data from 5 tables in db: Folder, Document, DocumentType, Category, and DocumentReference
-
         private IPublicRepository repository = null;
 
         public PublicVMController() {
             this.repository = new PublicRepository();
         }
-        // dunno if need this: [AcceptVerbs(HttpVerbs.Get)]
+
+        //keep for future testing
+        /*
+        public PublicVMController(IPublicRepository repository) {
+
+            this.repository = repository;
+        }
+        */
+
         // GET: PublicVM
+        [AcceptVerbs(HttpVerbs.Get)] // dunno if need this: 
         public ActionResult Index(string publicId)
         {
+            TempData.Keep("Person_Name");
             IEnumerable<PublicVM> publicModel = repository.SelectAll(publicId);
             return View(publicModel);
         }

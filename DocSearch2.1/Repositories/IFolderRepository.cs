@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DocSearch2._1.Repositories
 {
-    interface IFolderRepository
+    public interface IFolderRepository
     {
         tbl_Folder SelectByID(string id);
     }

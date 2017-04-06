@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DocSearch2._1.Repositories
 {
-    interface IPublicRepository
+    public interface IPublicRepository
     {
         IEnumerable<PublicVM> SelectAll(string publicNumber);
     }

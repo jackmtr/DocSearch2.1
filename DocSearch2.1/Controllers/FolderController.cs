@@ -16,6 +16,7 @@ namespace DocSearch2._1.Controllers
             this.repository = new FolderRepository();
         }
 
+        //keep for future testing
         /*
         public FolderController(IFolderRepository repository) {
             this.repository = repository;
@@ -28,7 +29,9 @@ namespace DocSearch2._1.Controllers
         {
             tbl_Folder folder = repository.SelectByID(publicId);
 
-            return View(folder);
+            TempData["Person_Name"] = folder.Name;
+
+            return RedirectToAction("Index", "PublicVM", new { publicId = publicId });
         }
     }
 }

@@ -28,17 +28,17 @@ namespace DocSearch2._1.Repositories
 
             int publicNumberInt = Int32.Parse(publicNumber); //should be able to be done in LINQ
 
-            var documentList = (from d in _db.tbl_Document
-                               join f in _db.tbl_Folder on d.Folder_ID equals f.Folder_ID
-                                //where d.Folder_ID == SqlFunctions.StringConvert((double)publicNumber)
-                                where d.Folder_ID == publicNumberInt
+            var documentList = (from d in _db.tbl_Document                        
+                                join f in _db.tbl_Folder on d.Folder_ID equals f.Folder_ID
                                 join dr in _db.tbl_DocReference on d.Document_ID equals dr.Document_ID
-                               join cab in _db.tbl_Cabinet on f.Cabinet_ID equals cab.Cabinet_ID
-                               join dt in _db.tbl_DocumentType on cab.Cabinet_ID equals dt.Cabinet_ID
-                               join cat in _db.tbl_Category on dt.Category_ID equals cat.Category_ID
-                               select new {
-                                   f.Folder_ID, d.Document_ID, dt.DocumentType_ID, DtName = dt.Name, d.Issue_DT, d.Description, cat.Category_ID, CatName = cat.Name , dr.Date1_DT, dr.RefNumber
-                               }).ToList();
+                                join dt in _db.tbl_DocumentType on d.DocumentType_ID equals dt.DocumentType_ID
+                                join cat in _db.tbl_Category on dt.Category_ID equals cat.Category_ID
+                                where d.Folder_ID == publicNumberInt
+                                where d.Issue_DT != null
+                                //where d.Folder_ID == SqlFunctions.StringConvert((double)publicNumber)
+                                select new {
+                                       f.Folder_ID, d.Document_ID, dt.DocumentType_ID, DtName = dt.Name, d.Issue_DT, d.Description, cat.Category_ID, CatName = cat.Name , dr.Date1_DT, dr.RefNumber
+                                   }).ToList();
 
             foreach (var item in documentList) {
                 PublicVM objpvm = new PublicVM();
