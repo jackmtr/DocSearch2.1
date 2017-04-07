@@ -25,7 +25,7 @@ namespace DocSearch2._1.Controllers
         */
 
         // GET: PublicVM
-        [AcceptVerbs(HttpVerbs.Get)] // dunno if need this: 
+        [HttpGet] // dunno if need this: 
         public ActionResult Index(string publicId)
         {
             TempData.Keep("Person_Name");

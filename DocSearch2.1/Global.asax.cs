@@ -12,6 +12,8 @@ namespace DocSearch2._1
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            FilterConfig.RegisterGlobalFilter(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
